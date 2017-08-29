@@ -4,13 +4,13 @@ var utils = require('./utils');
 var APIDocGenerator = function () {
 	this.generate = function (context, requests, options) {
 
-		var request = context.getCurrentRequest();
-
+        // var request = context.getCurrentRequest();
+        var request = requests[0];
 		var headers = [];
 		var params = [];
 		var response = [];
-
-		var responseBody = JSON.parse(request.getLastExchange().responseBody);
+		
+        var responseBody = JSON.parse(request.getLastExchange().responseBody);
 		if (responseBody.status === `SUCCESS` && responseBody.data) {
 			extractKeyNamesAndTypes(responseBody.data, response);
 		}
